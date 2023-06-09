@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  showdata(String name) {
+    print("login user===$name");
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Project"),
@@ -23,10 +28,49 @@ class HomeScreen extends StatelessWidget {
           Container(
             height: height * .88,
             width: width,
-            color: Color.fromARGB(255, 250, 249, 249),
+            color: Color.fromARGB(255, 0, 0, 0),
             child: Column(children: [
               Container(
                 height: 300,
+                width: width,
+                color: Color.fromARGB(255, 255, 189, 7),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            height: 100,
+                            width: 200,
+                            color: Color.fromARGB(255, 197, 255, 7),
+                            child: Row(children: [
+                              TextButton(
+                                  onPressed: () => {showdata("user1")},
+                                  child: Text("Login")),
+                              Icon(Icons.home)
+                            ]),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            clipBehavior: Clip.antiAlias,
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 90, 7, 255),
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Image.asset(
+                              "assets/images/img2.jpeg",
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        ],
+                      )
+                    ]),
+              ),
+              Container(
                 width: width,
                 color: Color.fromARGB(255, 7, 255, 110),
                 child: Row(children: [
@@ -35,8 +79,8 @@ class HomeScreen extends StatelessWidget {
                       Container(
                         height: 100,
                         width: 100,
-                        color: Color.fromARGB(255, 197, 255, 7),
-                      )
+                        color: Color.fromARGB(255, 255, 7, 226),
+                      ),
                     ],
                   ),
                   Column(
@@ -44,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                       Container(
                         height: 100,
                         width: 100,
-                        color: Color.fromARGB(255, 90, 7, 255),
+                        color: Color.fromARGB(255, 255, 7, 23),
                       )
                     ],
                   )
