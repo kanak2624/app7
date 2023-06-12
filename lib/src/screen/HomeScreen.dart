@@ -1,3 +1,4 @@
+import 'package:app7/src/components/ProductComponent.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -22,10 +23,53 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: const [Icon(Icons.card_travel), Icon(Icons.notifications)],
       ),
-      backgroundColor: const Color.fromARGB(255, 244, 224, 3),
       body: Column(
         children: [
           Container(
+            height: height * .88,
+            width: width,
+            child: SingleChildScrollView(
+              child: Column(children: [
+                Container(
+                  height: 300,
+                  width: width,
+                  color: Color.fromARGB(255, 86, 0, 247),
+                ),
+                Container(
+                  height: 400,
+                  width: width,
+                  child: ProductComponent(),
+                ),
+                Container(
+                  height: 400,
+                  width: width,
+                  child: ProductComponent(),
+                ),
+                Container(
+                  height: 300,
+                  width: width,
+                  color: Color.fromARGB(255, 86, 0, 247),
+                ),
+              ]),
+            ),
+          ),
+          /* 
+          Container(
+            height: 300,
+            width: width,
+            color: Color.fromARGB(255, 247, 0, 0),
+          ),
+          Container(
+            height: 300,
+            width: width,
+            color: Color.fromARGB(255, 78, 247, 0),
+          ),
+          Container(
+            height: 300,
+            width: width,
+            color: Color.fromARGB(255, 86, 0, 247),
+          ), */
+          /* Container(
             height: height * .88,
             width: width,
             color: Color.fromARGB(255, 0, 0, 0),
@@ -93,8 +137,8 @@ class HomeScreen extends StatelessWidget {
                     ],
                   )
                 ]),
-              ),
-              /*   Container(
+              ), */
+          /*   Container(
                 height: 200,
                 width: width,
                 margin: EdgeInsets.all(30),
@@ -105,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                       bottomRight: Radius.circular(100)),
                 ),
               ), */
-              /*  Container(
+          /*  Container(
                 height: 200,
                 width: width,
                 margin: EdgeInsets.all(30),
@@ -114,8 +158,6 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                 ),
               ), */
-            ]),
-          ),
         ],
       ),
     );
