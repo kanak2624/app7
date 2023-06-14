@@ -1,7 +1,134 @@
 import 'package:app7/src/components/ProductComponent.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+enum DrawerSection {
+  dashboard,
+  contacts,
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  Widget Dashboard() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      color: Colors.amber,
+      child: Text(
+        "Dashboard",
+        style: TextStyle(fontSize: 50, color: Colors.black),
+      ),
+    );
+  }
+
+  Widget Contacts() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      color: Color.fromARGB(255, 28, 7, 255),
+      child: Text(
+        "Contacts",
+        style: TextStyle(fontSize: 50, color: Colors.black),
+      ),
+    );
+  }
+
+  Widget Header() {
+    return Container(
+      height: MediaQuery.of(context).size.height * .2,
+      width: MediaQuery.of(context).size.width,
+      color: Color.fromARGB(255, 0, 18, 179),
+      child: Text(
+        "Header",
+        style: TextStyle(fontSize: 30, color: Colors.amber),
+      ),
+    );
+  }
+
+  Widget ListData() {
+    return Container(
+      padding: EdgeInsets.only(
+        top: 15,
+      ),
+      child: Column(children: [
+        menuItem(1, "DashBoard", Icons.dashboard_outlined,
+            currentPage == DrawerSection.dashboard ? true : false),
+        menuItem(2, "contacts", Icons.people_alt_outlined,
+            currentPage == DrawerSection.contacts ? true : false),
+      ]),
+    );
+  }
+
+  Widget menuItem(int id, String title, IconData icon, bool selected) {
+    return Material(
+      color: selected ? Colors.grey[300] : Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+          setState(() {
+            if (id == 1) {
+              currentPage = DrawerSection.dashboard;
+            } else if (id == 2) {
+              currentPage = DrawerSection.contacts;
+            }
+          });
+        },
+        child: Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Icon(
+                  icon,
+                  size: 20,
+                  color: Colors.black,
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  title,
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  var currentPage = DrawerSection.dashboard;
+
+  @override
+  Widget build(BuildContext context) {
+    var container;
+    if (currentPage == DrawerSection.dashboard) {
+      container = Dashboard();
+    } else if (currentPage == DrawerSection.contacts) {
+      container = Contacts();
+    }
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(title: Text("Home Screen")),
+        drawer: Drawer(
+            child: SingleChildScrollView(
+          child: Column(children: [Header(), ListData()]),
+        )),
+        body: container,
+      ),
+    );
+  }
+}
+
+
+
+/* class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   showdata(String name) {
@@ -25,7 +152,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Container(
+          /*   Container(
             height: height * .88,
             width: width,
             child: SingleChildScrollView(
@@ -52,7 +179,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ]),
             ),
-          ),
+          ), */
           /* 
           Container(
             height: 300,
@@ -163,3 +290,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+ */
