@@ -1,4 +1,7 @@
+import 'package:app7/src/components/HeaderComponent.dart';
 import 'package:app7/src/components/ProductComponent.dart';
+import 'package:app7/src/screen/ContactScreen.dart';
+import 'package:app7/src/screen/DashboardScreen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,7 +17,7 @@ enum DrawerSection {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Widget Dashboard() {
+  /* Widget Dashboard() {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
@@ -24,9 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
         style: TextStyle(fontSize: 50, color: Colors.black),
       ),
     );
-  }
+  } */
 
-  Widget Contacts() {
+  /*  Widget Contacts() {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
@@ -36,9 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
         style: TextStyle(fontSize: 50, color: Colors.black),
       ),
     );
-  }
+  } */
 
-  Widget Header() {
+  /* Widget Header() {
     return Container(
       height: MediaQuery.of(context).size.height * .2,
       width: MediaQuery.of(context).size.width,
@@ -48,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         style: TextStyle(fontSize: 30, color: Colors.amber),
       ),
     );
-  }
+  } */
 
   Widget ListData() {
     return Container(
@@ -109,16 +112,24 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var container;
     if (currentPage == DrawerSection.dashboard) {
-      container = Dashboard();
+      container = DashboardScreen();
     } else if (currentPage == DrawerSection.contacts) {
-      container = Contacts();
+      container = ContactScreen();
     }
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text("Home Screen")),
+        /*  appBar: AppBar(title: Text("Home Screen")), */
         drawer: Drawer(
             child: SingleChildScrollView(
-          child: Column(children: [Header(), ListData()]),
+          child: Column(children: [
+            Container(
+              height: 200,
+              color: Colors.amber,
+              width: MediaQuery.of(context).size.width,
+              child: HeaderComponent(),
+            ),
+            ListData()
+          ]),
         )),
         body: container,
       ),
