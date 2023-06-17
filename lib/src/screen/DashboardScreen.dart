@@ -1,4 +1,5 @@
 import 'package:app7/src/components/ShopComponent.dart';
+import 'package:app7/src/screen/SingleShopScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -23,6 +24,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
     "assets/images/shopImage/shop2.jpg",
     "assets/images/shopImage/shop3.jpg"
   ];
+  SingleShop(String pname, String image, String loc) {
+    print("Single shop");
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) =>
+            SingleShopScreen(pname: pname, image: image, location: loc),
+      ),
+    );
+  }
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -102,10 +113,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               children: [
                                 for (int i = 0; i < shopname.length; i++)
                                   ShopComponent(
-                                    image: shopimage[i],
-                                    pname: shopname[i],
-                                    location: shoploc[i],
-                                  ),
+                                      image: shopimage[i],
+                                      pname: shopname[i],
+                                      location: shoploc[i],
+                                      btn: () => SingleShop(shopname[i],
+                                          shopimage[i], shoploc[i])),
                               ],
                             )),
                       )
