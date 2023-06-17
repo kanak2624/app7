@@ -132,6 +132,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ]),
         )),
         body: container,
+        bottomNavigationBar: BottomNavigationBar(items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_rounded), label: "Profile")
+        ]),
       ),
     );
   }

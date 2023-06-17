@@ -1,3 +1,4 @@
+import 'package:app7/src/components/ShopComponent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -11,14 +12,16 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
-  List<String> product = [
-    "Product1",
-    "Product2",
-    "product3",
-    "product4",
-    "product5",
-    "product6",
-    "product7"
+  List<String> shopname = ["Taco Bell", "LAXMI BAKEY", "Shiv sagar cafe"];
+  List<String> shoploc = [
+    "Shop No 04, Food Court, 3rd Floor",
+    "Ram Gali Number 6, opp. Dashera Maidan",
+    "Near Hanuman Dhaba, Jaipur, 302004, Raja park"
+  ];
+  List<String> shopimage = [
+    "assets/images/shopImage/shop1.jpg",
+    "assets/images/shopImage/shop2.jpg",
+    "assets/images/shopImage/shop3.jpg"
   ];
   Widget build(BuildContext context) {
     return SafeArea(
@@ -53,7 +56,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 20),
+                  margin: EdgeInsets.all(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -61,64 +64,47 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         child: Text(
                           "Top Rated",
                           style: TextStyle(
-                              fontSize: 30,
-                              color: Color.fromARGB(255, 255, 255, 255)),
+                              fontSize: 22,
+                              color: Color.fromARGB(255, 3, 3, 3)),
                         ),
                       ),
                       Container(
-                        child: Text(
-                          "See All",
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Color.fromARGB(255, 255, 255, 255)),
+                        child: InkWell(
+                          onTap: () {
+                            print("tabb text");
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                "See All",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: "sans-serif",
+                                    color: Color.fromARGB(255, 0, 0, 0)),
+                              ),
+                              Icon(Icons.arrow_right),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * .585,
+                  height: MediaQuery.of(context).size.height * .517,
                   child: Column(
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.height * .585,
+                        height: MediaQuery.of(context).size.height * .517,
                         child: SingleChildScrollView(
                             scrollDirection: Axis.vertical,
                             child: Column(
                               children: [
-                                for (int i = 0; i < product.length; i++)
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color:
-                                            Color.fromARGB(255, 235, 209, 142),
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    margin: EdgeInsets.all(10),
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 200,
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .6,
-                                            color: Color.fromARGB(
-                                                255, 248, 7, 184),
-                                            height: 100,
-                                          ),
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .3,
-                                            color:
-                                                Color.fromARGB(255, 43, 248, 7),
-                                            height: 100,
-                                          ),
-                                        ]),
+                                for (int i = 0; i < shopname.length; i++)
+                                  ShopComponent(
+                                    image: shopimage[i],
+                                    pname: shopname[i],
+                                    location: shoploc[i],
                                   ),
                               ],
                             )),
