@@ -4,12 +4,15 @@ import 'package:app7/src/screen/ReviewScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class SingleShopScreen extends StatefulWidget {
   String? pname;
   String? image;
   String? location;
-  SingleShopScreen({super.key, this.pname, this.image, this.location});
+  List<Map<String, dynamic>>? menuitem;
+  SingleShopScreen(
+      {super.key, this.pname, this.image, this.location, this.menuitem});
 
   @override
   State<SingleShopScreen> createState() => _SingleShopScreenState();
@@ -18,10 +21,29 @@ class SingleShopScreen extends StatefulWidget {
 class _SingleShopScreenState extends State<SingleShopScreen> {
   bool isVisible = true;
 
-  MenuItem() {
+  call() {
+    UrlLauncher.launch("tel://9784837939");
+  }
+
+  Whatsapp() async {
+    var whatsapp = "+919784837939";
+    var whatsappAndroid =
+        Uri.parse("whatsapp://send?phone=$whatsapp&text=hello");
+    if (await UrlLauncher.canLaunchUrl(whatsappAndroid)) {
+      await UrlLauncher.launchUrl(whatsappAndroid);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("WhatsApp is not installed on the device"),
+        ),
+      );
+    }
+  }
+
+  MenuItem(menuitem) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => MenuScreen(),
+        builder: (context) => MenuScreen(menuitem: menuitem),
       ),
     );
   }
@@ -44,6 +66,12 @@ class _SingleShopScreenState extends State<SingleShopScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.menuitem);
+
+    var menuitem1 = (widget.menuitem);
+
+    print("**************");
+    print(menuitem1);
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -259,31 +287,41 @@ class _SingleShopScreenState extends State<SingleShopScreen> {
                     child: Row(
                       children: [
                         Container(
+                          width: 45,
+                          height: 45,
                           margin: EdgeInsets.only(right: 12),
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(0),
                           decoration: BoxDecoration(
                               border: Border.all(
                                   width: 1,
                                   color: Color.fromARGB(255, 0, 0, 0)),
                               borderRadius: BorderRadius.circular(30)),
-                          child: const Icon(
-                            Icons.abc,
-                            size: 25,
-                            color: Colors.amber,
+                          child: TextButton(
+                            onPressed: Whatsapp,
+                            child: Icon(
+                              Icons.wifi_calling_3,
+                              size: 25,
+                              color: Color.fromARGB(255, 3, 151, 12),
+                            ),
                           ),
                         ),
                         Container(
+                          width: 45,
+                          height: 45,
                           margin: EdgeInsets.only(right: 12),
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(0),
                           decoration: BoxDecoration(
                               border: Border.all(
                                   width: 1,
-                                  color: Color.fromARGB(255, 0, 0, 0)),
+                                  color: Color.fromARGB(255, 3, 151, 12)),
                               borderRadius: BorderRadius.circular(30)),
-                          child: const Icon(
-                            Icons.call,
-                            size: 25,
-                            color: Colors.amber,
+                          child: TextButton(
+                            onPressed: call,
+                            child: Icon(
+                              Icons.call,
+                              size: 25,
+                              color: Color.fromARGB(255, 3, 151, 12),
+                            ),
                           ),
                         ),
                       ],
@@ -307,7 +345,7 @@ class _SingleShopScreenState extends State<SingleShopScreen> {
                   ),
                   Container(
                     child: ElevatedButton(
-                      onPressed: MenuItem,
+                      onPressed: () => MenuItem(menuitem1),
                       child: Icon(Icons.arrow_circle_right),
                     ),
                   )

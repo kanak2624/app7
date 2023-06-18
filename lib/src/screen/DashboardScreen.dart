@@ -24,12 +24,44 @@ class _DashboardScreenState extends State<DashboardScreen> {
     "assets/images/shopImage/shop2.jpg",
     "assets/images/shopImage/shop3.jpg"
   ];
-  SingleShop(String pname, String image, String loc) {
+
+  List<Map<String, dynamic>> menuitem = [
+    {
+      "product": [
+        {
+          "id": 1,
+          "name": "SandWich",
+          "rate": 200,
+          "image": "assets/images/menuitem/sandwich.jpg"
+        },
+        {
+          "id": 2,
+          "name": "ChowMein",
+          "rate": 120,
+          "image": "assets/images/menuitem/ChowMein.jpg"
+        },
+        {
+          "id": 3,
+          "name": "HotDog",
+          "rate": 220,
+          "image": "assets/images/menuitem/hotdog.jpg"
+        },
+        {
+          "id": 4,
+          "name": "Burger",
+          "rate": 250,
+          "image": "assets/images/menuitem/burger.jpg"
+        },
+      ]
+    }
+  ];
+  SingleShop(String pname, String image, String loc,
+      List<Map<String, dynamic>> menuitem) {
     print("Single shop");
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) =>
-            SingleShopScreen(pname: pname, image: image, location: loc),
+        builder: (context) => SingleShopScreen(
+            pname: pname, image: image, location: loc, menuitem: menuitem),
       ),
     );
   }
@@ -117,7 +149,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       pname: shopname[i],
                                       location: shoploc[i],
                                       btn: () => SingleShop(shopname[i],
-                                          shopimage[i], shoploc[i])),
+                                          shopimage[i], shoploc[i], menuitem)),
                               ],
                             )),
                       )
