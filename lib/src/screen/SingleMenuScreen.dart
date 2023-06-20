@@ -3,21 +3,25 @@ import 'package:flutter/material.dart';
 
 class SingleMenuScreen extends StatefulWidget {
   var item;
-  SingleMenuScreen({super.key, this.item});
+  var cart;
+  SingleMenuScreen({super.key, this.item, this.cart});
 
   @override
   State<SingleMenuScreen> createState() => _SingleMenuScreenState();
 }
 
 class _SingleMenuScreenState extends State<SingleMenuScreen> {
-  cart(item) {
+  cart(item, cartitem) {
     print(item);
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => CartScreen(item: item)));
+    cartitem.add(item);
+
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => CartScreen(item: item, cart: cartitem)));
   }
 
   @override
   Widget build(BuildContext context) {
+    var cartitem = widget.cart;
     print(widget.item);
     var item1 = widget.item;
     double w = MediaQuery.of(context).size.width;
@@ -85,7 +89,7 @@ class _SingleMenuScreenState extends State<SingleMenuScreen> {
                             height: h * .1,
                             color: Color.fromARGB(255, 174, 174, 174),
                             child: TextButton(
-                              onPressed: () => cart(item1),
+                              onPressed: () => cart(item1, cartitem),
                               child: Text("Add to cart",
                                   style: TextStyle(
                                       fontSize: 30,

@@ -52,7 +52,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
           "rate": 250,
           "image": "assets/images/menuitem/burger.jpg"
         },
-      ]
+      ],
+      "addtocart": []
     }
   ];
   SingleShop(String pname, String image, String loc,

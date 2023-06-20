@@ -17,6 +17,9 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     var menuitem = widget.menuitem;
+    print("************menuscreen************");
+    print(menuitem[0]["addtocart"]);
+    var addcart = menuitem[0]["addtocart"];
     try {
       pro = menuitem[0]['product'];
       /* for (int i = 0; i < pro.length; i++) {
@@ -31,7 +34,7 @@ class _MenuScreenState extends State<MenuScreen> {
     addtocart(var item1) {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => SingleMenuScreen(item: item1),
+          builder: (context) => SingleMenuScreen(item: item1, cart: addcart),
         ),
       );
     }
