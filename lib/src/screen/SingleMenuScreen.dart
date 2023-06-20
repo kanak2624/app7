@@ -10,10 +10,10 @@ class SingleMenuScreen extends StatefulWidget {
 }
 
 class _SingleMenuScreenState extends State<SingleMenuScreen> {
-  cart() {
-    print("object");
+  cart(item) {
+    print(item);
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => CartScreen()));
+        .push(MaterialPageRoute(builder: (context) => CartScreen(item: item)));
   }
 
   @override
@@ -67,10 +67,14 @@ class _SingleMenuScreenState extends State<SingleMenuScreen> {
                         child: Column(children: [
                           Container(
                             width: w,
-                            height: h * .2,
+                            margin: EdgeInsets.only(top: 30),
+                            padding: EdgeInsets.all(50),
                             color: Color.fromARGB(255, 7, 255, 181),
-                            child: Text("data"),
-                          )
+                            child: Text(
+                              "Rs.${item1['rate']}/-",
+                              style: TextStyle(fontSize: 25),
+                            ),
+                          ),
                         ]),
                       ),
                       Container(
@@ -79,11 +83,14 @@ class _SingleMenuScreenState extends State<SingleMenuScreen> {
                             margin: EdgeInsets.only(top: h * .28),
                             width: w,
                             height: h * .1,
-                            color: Color.fromARGB(255, 255, 7, 255),
+                            color: Color.fromARGB(255, 174, 174, 174),
                             child: TextButton(
-                              onPressed: cart,
+                              onPressed: () => cart(item1),
                               child: Text("Add to cart",
-                                  style: TextStyle(fontSize: 30)),
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      color: const Color.fromARGB(
+                                          255, 250, 250, 250))),
                             ),
                           )
                         ]),

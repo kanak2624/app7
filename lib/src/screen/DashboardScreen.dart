@@ -31,7 +31,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         {
           "id": 1,
           "name": "SandWich",
-          "rate": 200,
+          "rate": 100,
           "image": "assets/images/menuitem/sandwich.jpg"
         },
         {
