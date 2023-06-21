@@ -59,7 +59,7 @@ class _CartScreenState extends State<CartScreen> {
                           decoration: BoxDecoration(
                               color: Colors.amber,
                               borderRadius: BorderRadius.circular(10)),
-                          width: w * .4,
+                          width: w * .3,
                           child: Image.asset(
                             "${cartitem1[index]['image']}",
                             fit: BoxFit.cover,
@@ -79,16 +79,47 @@ class _CartScreenState extends State<CartScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
                       width: w,
-                      height: h * .1,
-                      color: Color.fromARGB(255, 139, 255, 7),
-                      child: Text("data"),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [Text("Sub Total"), Text("Rs. 2000/-")],
+                      ),
                     ),
                     Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
                       width: w,
-                      height: h * .1,
-                      color: Color.fromARGB(255, 139, 255, 7),
-                      child: Text("data"),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [Text("Shipping"), Text("Rs. 20/-")],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      width: w,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [Text("Taxes"), Text("Rs. 20/-")],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      width: w,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Total",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                          Text(
+                            "Rs. 2040/-",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          )
+                        ],
+                      ),
                     ),
                     Container(
                       clipBehavior: Clip.antiAlias,
