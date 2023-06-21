@@ -41,7 +41,7 @@ class _SingleMenuScreenState extends State<SingleMenuScreen> {
                     width: w,
                     height: h * .3,
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 191, 0),
+                      color: Color.fromARGB(255, 251, 251, 251),
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(50),
                           bottomRight: Radius.circular(50)),
@@ -65,38 +65,90 @@ class _SingleMenuScreenState extends State<SingleMenuScreen> {
                   child: Container(
                     width: w,
                     height: h * .5,
-                    color: Color.fromARGB(255, 206, 171, 67),
-                    child: Stack(children: [
+                    child: Column(children: [
                       Container(
                         child: Column(children: [
                           Container(
-                            width: w,
-                            margin: EdgeInsets.only(top: 30),
-                            padding: EdgeInsets.all(50),
-                            color: Color.fromARGB(255, 7, 255, 181),
-                            child: Text(
-                              "Rs.${item1['rate']}/-",
-                              style: TextStyle(fontSize: 25),
-                            ),
-                          ),
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 252, 252, 252),
+                                  borderRadius: BorderRadius.circular(20)),
+                              width: w,
+                              margin: EdgeInsets.all(
+                                20,
+                              ),
+                              padding: EdgeInsets.all(20),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    width: w * .3,
+                                    child: Text(
+                                      "Rs.${item1['rate']}/-",
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          color: Colors.amber,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Container(
+                                      width: w * .3,
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                              child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.star,
+                                                size: 16,
+                                              ),
+                                              Text(
+                                                "3.4",
+                                                style: TextStyle(fontSize: 16),
+                                              ),
+                                            ],
+                                          )),
+                                          SizedBox(
+                                            height: 20,
+                                          ),
+                                          Container(
+                                              child: Row(
+                                            children: [
+                                              Text(
+                                                "324 Reviews",
+                                                style: TextStyle(fontSize: 16),
+                                              ),
+                                              Icon(
+                                                Icons
+                                                    .arrow_forward_ios_outlined,
+                                                size: 16,
+                                              ),
+                                            ],
+                                          )),
+                                        ],
+                                      ))
+                                ],
+                              )),
                         ]),
                       ),
                       Container(
                         child: Column(children: [
                           Container(
-                            margin: EdgeInsets.only(top: h * .28),
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20)),
+                            margin: EdgeInsets.symmetric(horizontal: 15),
                             width: w,
                             height: h * .1,
-                            color: Color.fromARGB(255, 174, 174, 174),
-                            child: TextButton(
-                              onPressed: () => cart(item1, cartitem),
-                              child: Text("Add to cart",
+                            child: ElevatedButton(
+                                onPressed: () => cart(item1, cartitem),
+                                child: Text(
+                                  "Add to cart",
                                   style: TextStyle(
-                                      fontSize: 30,
-                                      color: const Color.fromARGB(
-                                          255, 250, 250, 250))),
-                            ),
-                          )
+                                    fontSize: 20,
+                                  ),
+                                )),
+                          ),
                         ]),
                       )
                     ]),
@@ -110,8 +162,17 @@ class _SingleMenuScreenState extends State<SingleMenuScreen> {
                     height: h * .3,
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
+                        boxShadow: [
+                          new BoxShadow(
+                            color: Color.fromARGB(255, 146, 145, 145),
+                            blurRadius: 10.0,
+                          )
+                        ],
+                        border: Border.all(
+                            width: 5,
+                            color: Color.fromARGB(255, 255, 255, 255)),
                         color: Color.fromARGB(255, 234, 234, 233),
-                        borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(100)),
                     child: Stack(children: [
                       Container(
                         width: w,
