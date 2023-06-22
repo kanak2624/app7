@@ -66,12 +66,8 @@ class _SingleShopScreenState extends State<SingleShopScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.menuitem);
-
     var menuitem1 = (widget.menuitem);
 
-    print("**************");
-    print(menuitem1);
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(

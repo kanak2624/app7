@@ -22,6 +22,7 @@ class _SingleMenuScreenState extends State<SingleMenuScreen> {
   @override
   Widget build(BuildContext context) {
     var cartitem = widget.cart;
+    print("****** Single Menu  *******");
     print(widget.item);
     var item1 = widget.item;
     double w = MediaQuery.of(context).size.width;

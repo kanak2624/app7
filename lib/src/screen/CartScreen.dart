@@ -13,11 +13,12 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   var productdata = [
-    {"id": 1, "subtotal": "0"},
-    {"id": 2, "shipping": "0"},
-    {"id": 3, "taxes": "0"},
+    {"id": 1, "name": "subtotal", "value": "0"},
+    {"id": 2, "name": "shipping", "value": "0"},
+    {"id": 3, "name": "taxes", "value": "0"},
   ];
   var cart1;
+  var cart;
   _CartScreenState(this.cart);
   var title = "Cart Screen";
   Orderplace() {
@@ -25,14 +26,15 @@ class _CartScreenState extends State<CartScreen> {
         .push(MaterialPageRoute(builder: (context) => PaymentScreen()));
   }
 
-  var cart;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    print("********* init state  ***********");
     setState(() {
       cart:
-      cart1;
+      cart;
     });
     WidgetsBinding.instance
         .addPostFrameCallback((_) => afterLayoutWidgetBuild());
@@ -45,7 +47,8 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   Qtyadd(cart) {
-    afterLayoutWidgetBuild();
+    //afterLayoutWidgetBuild();
+    print(cart);
     int c1 = cart["qty"];
     c1++;
     cart["qty"] = c1;
@@ -56,6 +59,7 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   Qtysub(cart) {
+    print(cart);
     var c1 = cart["qty"];
     c1--;
     cart["qty"] = c1;
@@ -68,7 +72,6 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     print("*******cart screen*****");
-
     print(cart);
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -80,6 +83,7 @@ class _CartScreenState extends State<CartScreen> {
               width: w,
               height: h * .5,
               child: ListView.builder(
+                itemCount: cart.length,
                 scrollDirection: Axis.vertical,
                 itemBuilder: ((context, index) {
                   return Container(
@@ -135,7 +139,6 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   );
                 }),
-                itemCount: cart.length,
               ),
             ),
             Container(
@@ -147,25 +150,24 @@ class _CartScreenState extends State<CartScreen> {
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 10),
                       width: w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("Sub Total"), Text("Rs. 2000/-")],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      width: w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("Shipping"), Text("Rs. 20/-")],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      width: w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("Taxes"), Text("Rs. 20/-")],
+                      height: 130,
+                      child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: productdata.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            width: w,
+                            height: 40,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("${productdata[index]["name"]}"),
+                                Text("Rs.${productdata[index]["value"]}/-")
+                              ],
+                            ),
+                          );
+                        },
                       ),
                     ),
                     Container(

@@ -18,7 +18,8 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     var menuitem = widget.menuitem;
     print("************menuscreen************");
-    print(menuitem[0]["addtocart"]);
+    print(menuitem);
+    // print(menuitem[0]["addtocart"]);
     var addcart = menuitem[0]["addtocart"];
     try {
       pro = menuitem[0]['product'];
