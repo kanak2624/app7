@@ -4,28 +4,72 @@ import 'package:flutter/material.dart';
 class CartScreen extends StatefulWidget {
   var item;
   var cart;
+
   CartScreen({super.key, required this.item, this.cart});
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
+  State<CartScreen> createState() => _CartScreenState(cart);
 }
 
 class _CartScreenState extends State<CartScreen> {
+  var productdata = [
+    {"id": 1, "subtotal": "0"},
+    {"id": 2, "shipping": "0"},
+    {"id": 3, "taxes": "0"},
+  ];
+  var cart1;
+  _CartScreenState(this.cart);
   var title = "Cart Screen";
   Orderplace() {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => PaymentScreen()));
   }
 
+  var cart;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      cart:
+      cart1;
+    });
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => afterLayoutWidgetBuild());
+  }
+
+  afterLayoutWidgetBuild() {
+    print("*******************************");
+    print("****************call again*************");
+    print("*******************************");
+  }
+
+  Qtyadd(cart) {
+    afterLayoutWidgetBuild();
+    int c1 = cart["qty"];
+    c1++;
+    cart["qty"] = c1;
+    setState(() {
+      cart:
+      cart["qty"];
+    });
+  }
+
+  Qtysub(cart) {
+    var c1 = cart["qty"];
+    c1--;
+    cart["qty"] = c1;
+    setState(() {
+      cart:
+      cart["qty"];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var cartitem1 = widget.cart;
-    var item1 = widget.item;
-    print(widget.item);
     print("*******cart screen*****");
-    print(cartitem1);
-    print(item1);
 
+    print(cart);
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -52,6 +96,7 @@ class _CartScreenState extends State<CartScreen> {
                       ],
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           margin: EdgeInsets.all(10),
@@ -61,15 +106,36 @@ class _CartScreenState extends State<CartScreen> {
                               borderRadius: BorderRadius.circular(10)),
                           width: w * .3,
                           child: Image.asset(
-                            "${cartitem1[index]['image']}",
+                            "${cart[index]['image']}",
                             fit: BoxFit.cover,
                           ),
-                        )
+                        ),
+                        Container(
+                          child: Text("data"),
+                        ),
+                        Container(
+                          child: Row(children: [
+                            TextButton(
+                                onPressed: () => Qtysub(cart[index]),
+                                child: Text(
+                                  "-",
+                                  style: TextStyle(fontSize: 50),
+                                )),
+                            Text("${cart[index]['qty']}"),
+                            /*   Text("${c}", style: TextStyle(fontSize: 20)), */
+                            TextButton(
+                                onPressed: () => Qtyadd(cart[index]),
+                                child: Text(
+                                  "+",
+                                  style: TextStyle(fontSize: 30),
+                                ))
+                          ]),
+                        ),
                       ],
                     ),
                   );
                 }),
-                itemCount: cartitem1.length,
+                itemCount: cart.length,
               ),
             ),
             Container(

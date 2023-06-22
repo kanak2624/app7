@@ -1,4 +1,5 @@
 import 'package:app7/src/components/ShopComponent.dart';
+import 'package:app7/src/screen/AllShopScreen.dart';
 import 'package:app7/src/screen/SingleShopScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -25,6 +26,267 @@ class _DashboardScreenState extends State<DashboardScreen> {
     "assets/images/shopImage/shop3.jpg"
   ];
 
+  List<Map<String, dynamic>> shop = [
+    {
+      "shops": [
+        {
+          "id": 1,
+          "shopname": "Taco Bell",
+          "shopimage": "assets/images/shopImage/shop1.jpg",
+          "shoploc": "Shop No 04, Food Court, 3rd Floor",
+          "rading": "3.4",
+          "distance": "10Km",
+          "time": "07:00-22:00",
+          "days": "Monday to sumday",
+          "phone": "9829139264",
+          "about": "Pure Vegetarian, Desserts, Chinese, Fast Food, Shakes, Tea",
+          "service": ["Wi-fi", "PARKING", "BAR"],
+          "review": [
+            {"username": "user1", "review": "best shop.."},
+            {"username": "user2", "review": "best nice shop.."},
+            {"username": "user3", "review": "nice shop.."},
+          ],
+          "gallery": [
+            "assets/images/shopImage/shop1.jpg",
+            "assets/images/shopImage/shop1.jpg",
+            "assets/images/shopImage/shop1.jpg"
+          ],
+          "food": [
+            {
+              "id": 1,
+              "name": "SandWich",
+              "rate": 100,
+              "image": "assets/images/menuitem/sandwich.jpg"
+            },
+            {
+              "id": 2,
+              "name": "ChowMein",
+              "rate": 120,
+              "image": "assets/images/menuitem/ChowMein.jpg"
+            },
+            {
+              "id": 3,
+              "name": "HotDog",
+              "rate": 220,
+              "image": "assets/images/menuitem/hotdog.jpg"
+            },
+            {
+              "id": 4,
+              "name": "Burger",
+              "rate": 250,
+              "image": "assets/images/menuitem/burger.jpg"
+            },
+          ],
+          "addtocart": [],
+          "order": [],
+        },
+        {
+          "id": 2,
+          "shopname": "Poni Coffee",
+          "shopimage": "assets/images/shopImage/shop2.jpg",
+          "shoploc": "Shop No 04, Food Court, 3rd Floor",
+          "rading": "3.4",
+          "distance": "2Km",
+          "time": "07:00-22:00",
+          "days": "Monday to sumday",
+          "phone": "9829139264",
+          "about": "Pure Vegetarian, Desserts, Chinese, Fast Food, Shakes, Tea",
+          "service": ["Wi-fi", "PARKING", "BAR"],
+          "review": [
+            {"username": "user1", "review": "best shop.."},
+            {"username": "user2", "review": "best nice shop.."},
+            {"username": "user3", "review": "nice shop.."},
+          ],
+          "gallery": [
+            "assets/images/shopImage/shop1.jpg",
+            "assets/images/shopImage/shop1.jpg",
+            "assets/images/shopImage/shop1.jpg"
+          ],
+          "food": [
+            {
+              "id": 1,
+              "name": "SandWich",
+              "rate": 100,
+              "image": "assets/images/menuitem/sandwich.jpg"
+            },
+            {
+              "id": 2,
+              "name": "ChowMein",
+              "rate": 120,
+              "image": "assets/images/menuitem/ChowMein.jpg"
+            },
+            {
+              "id": 3,
+              "name": "HotDog",
+              "rate": 220,
+              "image": "assets/images/menuitem/hotdog.jpg"
+            },
+            {
+              "id": 4,
+              "name": "Burger",
+              "rate": 250,
+              "image": "assets/images/menuitem/burger.jpg"
+            },
+          ],
+          "addtocart": [],
+          "order": [],
+        },
+        {
+          "id": 3,
+          "shopname": "Romino's Pizza Mansarover",
+          "shopimage": "assets/images/shopImage/shop3.jpg",
+          "shoploc": "Shop No 04, Food Court, 3rd Floor",
+          "rading": "4.4",
+          "distance": "5Km",
+          "time": "07:00-22:00",
+          "days": "Monday to sumday",
+          "phone": "9829139264",
+          "about": "Pure Vegetarian, Desserts, Chinese, Fast Food, Shakes, Tea",
+          "service": ["Wi-fi", "PARKING", "BAR"],
+          "review": [
+            {"username": "user1", "review": "best shop.."},
+            {"username": "user2", "review": "best nice shop.."},
+            {"username": "user3", "review": "nice shop.."},
+          ],
+          "gallery": [
+            "assets/images/shopImage/shop1.jpg",
+            "assets/images/shopImage/shop1.jpg",
+            "assets/images/shopImage/shop1.jpg"
+          ],
+          "food": [
+            {
+              "id": 1,
+              "name": "SandWich",
+              "rate": 100,
+              "image": "assets/images/menuitem/sandwich.jpg"
+            },
+            {
+              "id": 2,
+              "name": "ChowMein",
+              "rate": 120,
+              "image": "assets/images/menuitem/ChowMein.jpg"
+            },
+            {
+              "id": 3,
+              "name": "HotDog",
+              "rate": 220,
+              "image": "assets/images/menuitem/hotdog.jpg"
+            },
+            {
+              "id": 4,
+              "name": "Burger",
+              "rate": 250,
+              "image": "assets/images/menuitem/burger.jpg"
+            },
+          ],
+          "addtocart": [],
+          "order": [],
+        },
+        {
+          "id": 4,
+          "shopname": "Hare Rama Hare Krishna Dhaba",
+          "shopimage": "assets/images/shopImage/shop1.jpg",
+          "shoploc": "Shop No 04, Food Court, 3rd Floor",
+          "rading": "4.4",
+          "distance": "6Km",
+          "time": "07:00-22:00",
+          "days": "Monday to sumday",
+          "phone": "9829139264",
+          "about": "Pure Vegetarian, Desserts, Chinese, Fast Food, Shakes, Tea",
+          "service": ["Wi-fi", "PARKING", "BAR"],
+          "review": [
+            {"username": "user1", "review": "best shop.."},
+            {"username": "user2", "review": "best nice shop.."},
+            {"username": "user3", "review": "nice shop.."},
+          ],
+          "gallery": [
+            "assets/images/shopImage/shop1.jpg",
+            "assets/images/shopImage/shop1.jpg",
+            "assets/images/shopImage/shop1.jpg"
+          ],
+          "food": [
+            {
+              "id": 1,
+              "name": "SandWich",
+              "rate": 100,
+              "image": "assets/images/menuitem/sandwich.jpg"
+            },
+            {
+              "id": 2,
+              "name": "ChowMein",
+              "rate": 120,
+              "image": "assets/images/menuitem/ChowMein.jpg"
+            },
+            {
+              "id": 3,
+              "name": "HotDog",
+              "rate": 220,
+              "image": "assets/images/menuitem/hotdog.jpg"
+            },
+            {
+              "id": 4,
+              "name": "Burger",
+              "rate": 250,
+              "image": "assets/images/menuitem/burger.jpg"
+            },
+          ],
+          "addtocart": [],
+          "order": [],
+        },
+        {
+          "id": 5,
+          "shopname": "New Bakers Pride",
+          "shopimage": "assets/images/shopImage/shop4.jpg",
+          "shoploc": "Shop No 04, Food Court, 3rd Floor",
+          "rading": "3.4",
+          "distance": "10Km",
+          "time": "07:00-22:00",
+          "days": "Monday to sumday",
+          "phone": "9829139264",
+          "about": "Pure Vegetarian, Desserts, Chinese, Fast Food, Shakes, Tea",
+          "service": ["Wi-fi", "PARKING", "BAR"],
+          "review": [
+            {"username": "user1", "review": "best shop.."},
+            {"username": "user2", "review": "best nice shop.."},
+            {"username": "user3", "review": "nice shop.."},
+          ],
+          "gallery": [
+            "assets/images/shopImage/shop1.jpg",
+            "assets/images/shopImage/shop1.jpg",
+            "assets/images/shopImage/shop1.jpg"
+          ],
+          "food": [
+            {
+              "id": 1,
+              "name": "SandWich",
+              "rate": 100,
+              "image": "assets/images/menuitem/sandwich.jpg"
+            },
+            {
+              "id": 2,
+              "name": "ChowMein",
+              "rate": 120,
+              "image": "assets/images/menuitem/ChowMein.jpg"
+            },
+            {
+              "id": 3,
+              "name": "HotDog",
+              "rate": 220,
+              "image": "assets/images/menuitem/hotdog.jpg"
+            },
+            {
+              "id": 4,
+              "name": "Burger",
+              "rate": 250,
+              "image": "assets/images/menuitem/burger.jpg"
+            },
+          ],
+          "addtocart": [],
+          "order": [],
+        }
+      ]
+    }
+  ];
   List<Map<String, dynamic>> menuitem = [
     {
       "product": [
@@ -32,25 +294,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
           "id": 1,
           "name": "SandWich",
           "rate": 100,
-          "image": "assets/images/menuitem/sandwich.jpg"
+          "image": "assets/images/menuitem/sandwich.jpg",
+          "qty": 1
         },
         {
           "id": 2,
           "name": "ChowMein",
           "rate": 120,
-          "image": "assets/images/menuitem/ChowMein.jpg"
+          "image": "assets/images/menuitem/ChowMein.jpg",
+          "qty": 1
         },
         {
           "id": 3,
           "name": "HotDog",
           "rate": 220,
-          "image": "assets/images/menuitem/hotdog.jpg"
+          "image": "assets/images/menuitem/hotdog.jpg",
+          "qty": 1
         },
         {
           "id": 4,
           "name": "Burger",
           "rate": 250,
-          "image": "assets/images/menuitem/burger.jpg"
+          "image": "assets/images/menuitem/burger.jpg",
+          "qty": 1
         },
       ],
       "addtocart": []
@@ -63,6 +329,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
       MaterialPageRoute(
         builder: (context) => SingleShopScreen(
             pname: pname, image: image, location: loc, menuitem: menuitem),
+      ),
+    );
+  }
+
+  allshop() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => AllShopScreen(shop: shop),
       ),
     );
   }
@@ -114,9 +388,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                       Container(
                         child: InkWell(
-                          onTap: () {
-                            print("tabb text");
-                          },
+                          onTap: allshop,
                           child: Row(
                             children: [
                               Text(
