@@ -5,6 +5,7 @@ import 'package:app7/src/components/HeaderComponent.dart';
 import 'package:app7/src/components/ProductComponent.dart';
 import 'package:app7/src/screen/ContactScreen.dart';
 import 'package:app7/src/screen/DashboardScreen.dart';
+import 'package:app7/src/screen/RegisterScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -15,10 +16,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-enum DrawerSection {
-  dashboard,
-  contacts,
-}
+enum DrawerSection { dashboard, contacts, register }
 
 class _HomeScreenState extends State<HomeScreen> {
   List<User> users = [];
@@ -75,6 +73,8 @@ class _HomeScreenState extends State<HomeScreen> {
             currentPage == DrawerSection.dashboard ? true : false),
         menuItem(2, "contacts", Icons.people_alt_outlined,
             currentPage == DrawerSection.contacts ? true : false),
+        menuItem(3, "register", Icons.app_registration,
+            currentPage == DrawerSection.contacts ? true : false),
       ]),
     );
   }
@@ -90,6 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
               currentPage = DrawerSection.dashboard;
             } else if (id == 2) {
               currentPage = DrawerSection.contacts;
+            } else if (id == 3) {
+              currentPage = DrawerSection.register;
             }
           });
         },
@@ -129,6 +131,8 @@ class _HomeScreenState extends State<HomeScreen> {
       container = DashboardScreen();
     } else if (currentPage == DrawerSection.contacts) {
       container = ContactScreen();
+    } else if (currentPage == DrawerSection.register) {
+      container = RegisterScreen();
     }
     return SafeArea(
       child: Scaffold(
