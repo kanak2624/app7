@@ -45,6 +45,24 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       users = datap;
     });
+    userRegister();
+  }
+
+  userRegister() async {
+    var params = {
+      "fname": "hanu",
+      "lname": "saini",
+      "email": "hanu@gmail.com",
+      "pass": "12345",
+      "cpass": "12345"
+    };
+    print(params);
+    const url = "http://ankursingh.xyz/api/registerUser.php";
+    final uri = Uri.parse(url);
+    final res = await http.post(uri, body: params);
+    final data = res.body;
+    final json = jsonDecode(data);
+    print(json);
   }
 
   Widget ListData() {
