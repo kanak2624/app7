@@ -1,8 +1,12 @@
+import 'dart:convert';
+
+import 'package:app7/src/Model/ProductHome.dart';
 import 'package:app7/src/components/HeaderComponent.dart';
 import 'package:app7/src/components/ProductComponent.dart';
 import 'package:app7/src/screen/ContactScreen.dart';
 import 'package:app7/src/screen/DashboardScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,41 +21,31 @@ enum DrawerSection {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  /* Widget Dashboard() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      color: Colors.amber,
-      child: Text(
-        "Dashboard",
-        style: TextStyle(fontSize: 50, color: Colors.black),
-      ),
-    );
-  } */
+  List<User> users = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getProduct();
+  }
 
-  /*  Widget Contacts() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      color: Color.fromARGB(255, 28, 7, 255),
-      child: Text(
-        "Contacts",
-        style: TextStyle(fontSize: 50, color: Colors.black),
-      ),
-    );
-  } */
+  getProduct() async {
+    print("api");
 
-  /* Widget Header() {
-    return Container(
-      height: MediaQuery.of(context).size.height * .2,
-      width: MediaQuery.of(context).size.width,
-      color: Color.fromARGB(255, 0, 18, 179),
-      child: Text(
-        "Header",
-        style: TextStyle(fontSize: 30, color: Colors.amber),
-      ),
-    );
-  } */
+    const url = "http://ankursingh.xyz/api/productshow.php";
+    final uri = Uri.parse(url);
+    final res = await http.get(uri);
+    final data = res.body;
+    final json = jsonDecode(data);
+
+    final products = json['body'] as List<dynamic>;
+    final datap = products.map((e) {
+      return User(product_name: e['product_name']);
+    }).toList();
+    setState(() {
+      users = datap;
+    });
+  }
 
   Widget ListData() {
     return Container(
@@ -110,6 +104,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("Widget");
+    print(users[0].product_name);
     var container;
     if (currentPage == DrawerSection.dashboard) {
       container = DashboardScreen();
